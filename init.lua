@@ -1,8 +1,24 @@
+local keymap = vim.api.nvim_set_keymap
+local default_opts = { noremap = true, silent = true }
+
+-- Move selected line
+keymap("n", "∆", ":move .+1<CR>", default_opts)
+keymap("n", "˚", ":move .-2<CR>", default_opts)
+-- Doublicate line
+keymap("n", "<leader>j", ":t .<CR>", default_opts)
+keymap("n", "<leader>k", ":t .-1<CR>", default_opts)
+
+keymap("n", "<Tab>", ":bnext<CR>", default_opts)
+keymap("n", "<S-Tab>", ":bprev<CR>", default_opts)
+
+
+
 return {
   -- colorscheme = "darcula",
   colorscheme = "catppuccin-macchiato",
   -- colorscheme = "catppuccin-frappe",
   -- colorscheme = "tokyonight-storm",
+
   plugins = {
     'doums/darcula',
     'folke/tokyonight.nvim',
@@ -28,6 +44,14 @@ return {
           }
         })
       end,
+    },
+    {
+      "tpope/vim-fugitive",
+      lazy = false,
+    },
+    {
+      "sindrets/diffview.nvim",
+      lazy = false,
     }
   }
 }
